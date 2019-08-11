@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
+
+import Venue from './Venue';
 import './App.css';
 
 class App extends Component 
@@ -7,6 +9,28 @@ class App extends Component
   constructor(props)
   {
     super(props);
+    this.state = {
+      venues:[
+         {
+          id: "4bc992e7b6c49c7401a28e91", 
+          name: "Ken Yakitori", 
+          address: ['3 City Road','Newton','Auckland'], 
+          category: "Japanese"
+        },
+        {
+          id: "4b4d4133f964a52070cf26e3", 
+          name: "Real Groovy", 
+          address: ['3 City Road','Newton','Auckland'], 
+          category: "Record Shop"
+        },
+        {
+          id: "4b53a56bf964a52013a627e3", 
+          name: "Revel! Cafe", 
+          address: ['3 City Road','Newton','Auckland'], 
+          category: "Café"
+        }
+      ]
+    }
   }
   render()
   {
@@ -14,32 +38,17 @@ class App extends Component
     <div className="app">
       <div className="container">
         <div className="venues">
-
-          <div className="card venue">
-            <div className="card-body">
-              <h1 className="venue-name" data-toggle="modal" data-target="#venue-modal">The Store</h1>
-              <p>5B Gore St</p>
-              <p>Auckland</p>
-              <p><span className="badge venue-type">Café</span></p>
-            </div>
-          </div>
-          <div className="card venue">
-            <div className="card-body">
-              <h1 className="venue-name">The Store</h1>
-              <p>5B Gore St</p>
-              <p>Auckland</p>
-              <p><span className="badge venue-type">Café</span></p>
-            </div>
-          </div>
-          <div className="card venue">
-            <div className="card-body">
-              <h1 className="venue-name">The Store</h1>
-              <p>5B Gore St</p>
-              <p>Auckland</p>
-              <p><span className="badge venue-type">Café</span></p>
-            </div>
-          </div> 
-        </div> 
+          {
+            this.state.venues.map((venue) => {
+              var venueProps = {
+                ...venue,
+                key:venue.id,
+              };
+              return(<Venue/>) ;
+            })
+           
+          }
+        </div>  
 
         <div className="venue-filters">
           
